@@ -1,0 +1,83 @@
+
+
+<!--%= render 'form', page: @page %-->
+<%= form_with(model: @page, local: true) do |form| %>
+  <% if @page.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@page.errors.count, "error") %> prohibited this page from being saved:</h2>
+
+      <ul>
+      <% @page.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="row">
+      <div class="col-9">
+        <div class="field pb-2">
+            <%= form.text_field :name %>
+        </div>
+
+        <div class="field">
+          <div id="source-editor" data-mode="markdown">
+            <%= form.text_area :body, rows: 20, style: "min-width: 100%" %>
+          </div>
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="field pb-2">
+          <%= form.file_field :uploads, multiple: true %>
+        </div>
+        <% @page.uploads.each do |upload| %>
+            <p><%= link_to upload.filename, upload %></p>
+            <!--p><%= debug upload.blob %></p-->
+        <% end %>
+ 
+    </div>
+  </div>
+  <div class="actions pt-2 pb-2">
+    <%= form.submit  :class => "btn btn-primary" %>
+  </div>
+<% end %>
+
+<%= link_to 'Show', @page %> |
+<%= link_to 'Back', pages_path %>
+
+<!--script src="https://ajaxorg.github.io/ace-builds/src-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+<script>
+    $( document ).ready(function() {
+	$('#source-editor').each(function() {
+	  var container = $(this);
+	  var mode = container.data('mode');
+	  var editorArea = container.find('textarea');
+		console.log(container);
+		console.log('er');
+	  // build a edit div for ACE since ACE can't load in a textarea
+	  var editDiv = $('<div>', {
+	    position: 'absolute',
+	      width: 600,
+	      height: 500,
+	      'class': editorArea.attr('class')
+	    }).insertBefore(editorArea);
+	  // no need to display textarea
+	  editorArea.css('display', 'none');
+
+	  var editor = ace.edit(editDiv[0]);
+
+      editor.renderer.setOption('showLineNumbers', false);
+	  editor.getSession().setUseWrapMode(true);
+	  editor.setFontSize('14px');
+	  editor.setTheme('ace/theme/yesterday');
+	  editor.getSession().setMode('ace/mode/' + mode);
+	  editor.getSession().setValue(editorArea.val());
+
+	  // save back to the textarea when submit
+	  editorArea.closest('form').submit(function() {
+	    editorArea.val(editor.getSession().getValue());
+	  });
+	});
+    });
+
+</script-->
+
