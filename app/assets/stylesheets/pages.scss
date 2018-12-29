@@ -2,13 +2,13 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-body {
-  padding-top: 5rem;
-}
-.starter-template {
+/*.starter-template {
   padding: 3rem 1.5rem;
-}
+}*/
 
+ul {
+      list-style-type: none;
+}
 
 #editor {
     position: absolute;

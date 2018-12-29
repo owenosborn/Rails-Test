@@ -4,7 +4,10 @@ Rails.application.routes.draw do
 
   	
   get '/files', to: 'filehelper#index'
-  get '/file/:id', to: 'filehelper#get_file'
- root 'welcome#index'
+
+ #the constraint allows anything in url except slash (normally '.' is not allowed
+  get '/file/:id', to: 'filehelper#get_file', constraints: { :id => /.*/ }
+ # get '/file/:id', to: 'filehelper#get_file'
+  root 'welcome#index'
 
 end
