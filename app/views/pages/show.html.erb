@@ -2,7 +2,12 @@
 
 <!--%= image_tag url_for(@page.cover_photo) %-->
 <!--%= link_to @page.cover_photo.filename, rails_blob_path(@page.cover_photo, disposition: "attachment") %-->
-
+        <% @page.uploads.each do |upload| %>
+            <p><%= link_to upload.filename, upload %></p>
+            <!--p><%= debug upload.blob %></p-->
+            <p class="player">play<%= audio_tag url_for upload %></p>
+        <% end %>
+ 
 <div class="row">
     <div class="col-md-6 order-md-12">
     <%= markdown_toc(@page.body) %>
@@ -13,3 +18,12 @@
     <div>
 </div>
 
+    <script>
+        $(document).ready(function() {
+
+        $(".player").click(function() {
+            $(this).children('audio')[0].play();
+
+        });
+    });
+    </script>
