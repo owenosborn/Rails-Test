@@ -1,11 +1,14 @@
 <p id="notice"><%= notice %></p>
 
+<div style="width: 40px; height: 40px;" class="btn btn-outline-secondary rounded-circle"></div>
+
 <!--%= image_tag url_for(@page.cover_photo) %-->
 <!--%= link_to @page.cover_photo.filename, rails_blob_path(@page.cover_photo, disposition: "attachment") %-->
         <% @page.uploads.each do |upload| %>
-            <p><%= link_to upload.filename, upload %></p>
+            <!--p><%= link_to upload.filename, upload %></p-->
             <!--p><%= debug upload.blob %></p-->
-            <p class="player">play<%= audio_tag url_for upload %></p>
+            <!--p class="player">play<%= audio_tag url_for upload %></p-->
+            <div style="width: 40px; height: 40px;" class="player btn btn-outline-secondary rounded-circle"><%= audio_tag url_for upload %>&nbsp;</div>
         <% end %>
  
 <div class="row">
