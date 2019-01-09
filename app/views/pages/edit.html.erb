@@ -21,7 +21,7 @@
 
         <div class="field">
           <div id="source-editor" data-mode="markdown">
-            <%= form.text_area :body, rows: 20, style: "min-width: 100%", disabled: true %>
+            <%= form.text_area :body, rows: 20, style: "min-width: 100%" %>
           </div>
         </div>
       </div>
@@ -40,7 +40,7 @@
     <%= form.submit  :class => "btn btn-primary" %>
   </div>
 <% end %>
-<button id="editmd" class="btn btn-primary">Edit MD</button>
+  <button id="editmd" class="btn btn-primary">Edit MD</button>
 <%= link_to 'Show', @page %> |
 <%= link_to 'Back', pages_path %>
 

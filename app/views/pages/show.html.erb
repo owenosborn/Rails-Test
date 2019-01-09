@@ -1,32 +1,38 @@
-<p id="notice"><%= notice %></p>
 
-<div style="width: 40px; height: 40px;" class="btn btn-outline-secondary rounded-circle"></div>
 
-<!--%= image_tag url_for(@page.cover_photo) %-->
-<!--%= link_to @page.cover_photo.filename, rails_blob_path(@page.cover_photo, disposition: "attachment") %-->
-        <% @page.uploads.each do |upload| %>
-            <!--p><%= link_to upload.filename, upload %></p-->
-            <!--p><%= debug upload.blob %></p-->
-            <!--p class="player">play<%= audio_tag url_for upload %></p-->
-            <div style="width: 40px; height: 40px;" class="player btn btn-outline-secondary rounded-circle"><%= audio_tag url_for upload %>&nbsp;</div>
-        <% end %>
- 
-<div class="row">
-    <div class="col-md-6 order-md-12">
-    <%= markdown_toc(@page.body) %>
+<% @page.uploads.each do |upload| %>
+    <div class="player btn btn-outline-secondary">
+       <audio src="<%= rails_blob_url upload %>" preload="auto"></audio>
+        Play
     </div>
+<% end %>
+<div id="sounds">
 
-    <div class="col-md-6 order-md-1">
-    <%= markdown(@page.body) %>
-    <div>
 </div>
 
-    <script>
-        $(document).ready(function() {
-
-        $(".player").click(function() {
-            $(this).children('audio')[0].play();
-
-        });
+<script>
+$(document).ready(function() {
+    $(".player").click(function() {
+        //$(this).children('audio')[0].load();
+        $(this).children('audio')[0].play();
     });
-    </script>
+
+    
+        
+<% @page.uploads.each_with_index do |upload, i| %>
+    var sound_<%=i%> = new Howl({
+      src: [
+ 
+      '<%= rails_blob_url upload %>',
+     
+      ]
+    });
+    sb = $('<button>play</button>').click(function() {
+        sound_<%=i%>.play();
+    });
+
+    $("#sounds").append(sb);
+<% end %>
+});
+//setTimeout(location.reload.bind(location), 180000);
+</script>

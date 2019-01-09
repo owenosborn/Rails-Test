@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<div style="width: 40px; height: 40px;" class="btn btn-outline-secondary rounded-circle"></div>
+
+<!--%= image_tag url_for(@page.cover_photo) %-->
+<!--%= link_to @page.cover_photo.filename, rails_blob_path(@page.cover_photo, disposition: "attachment") %-->
+        <% @page.uploads.each do |upload| %>
+            <!--p><%= link_to upload.filename, upload %></p-->
+            <!--p><%= debug upload.blob %></p-->
+            <!--p class="player">play<%= audio_tag url_for upload %></p-->
+            <!--div style="width: 40px; height: 40px;" class="player btn btn-outline-secondary rounded-circle"><%= audio_tag "/files/" + upload.blob.id.to_s, preload: "auto" %>&nbsp;</div-->
+            <div style="width: 40px; height: 40px;" class="player btn btn-outline-secondary rounded-circle"><%= audio_tag rails_blob_url upload, preload: "auto" %>&nbsp;</div>
+        <% end %>
+asdf 
+<div class="row">
+    <div class="col-md-6 order-md-12">
+    <%= markdown_toc(@page.body) %>
+    </div>
+
+    <div class="col-md-6 order-md-1">
+    <%= markdown(@page.body) %>
+    <div>
+</div>
+
+    <script>
+        $(document).ready(function() {
+
+        $(".player").click(function() {
+            $(this).children('audio')[0].play();
+
+        });
+    });
+    </script>

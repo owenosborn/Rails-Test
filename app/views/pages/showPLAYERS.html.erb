@@ -1,0 +1,5 @@
+
+
+<% @page.uploads.each do |upload| %>
+    <%= audio_tag(rails_blob_url(upload), controls: true) %>
+<% end %>
