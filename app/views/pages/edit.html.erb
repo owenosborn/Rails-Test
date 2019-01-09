@@ -27,7 +27,7 @@
       </div>
       <div class="col-3">
         <div class="field pb-2">
-          <%= form.file_field :uploads, multiple: true %>
+         <label class="btn btn-primary btn-file">Browse...<%= form.file_field :uploads, multiple: true, style: "display:none;", id: "upload-field" %></label><span id="file-stat"> 0 Files Selected</span>
         </div>
         <% @page.uploads.each do |upload| %>
             <p><%= link_to upload.filename, upload %></p>
@@ -48,6 +48,11 @@
 
 <script>
 $( document ).ready(function() {
+    $('#upload-field').change(function() {
+        num = document.getElementById("upload-field").files.length;
+		$('#file-stat').html(' ' + num + ' Files Selected');
+    });
+/*
     $('#editmd').click(function() {
         const el = document.querySelector('textarea');
         const stackedit = new Stackedit();
@@ -64,7 +69,7 @@ $( document ).ready(function() {
         stackedit.on('fileChange', (file) => {
             el.value = file.content.text;
         });   
-    });
+    });*/
 });
 </script>
 

@@ -1,22 +1,9 @@
-
-
-<% @page.uploads.each do |upload| %>
-    <div class="player btn btn-outline-secondary">
-       <audio src="<%= rails_blob_url upload %>" preload="auto"></audio>
-        Play
-    </div>
-<% end %>
 <div id="sounds">
 
 </div>
 
 <script>
 $(document).ready(function() {
-    $(".player").click(function() {
-        //$(this).children('audio')[0].load();
-        $(this).children('audio')[0].play();
-    });
-
     
         
 <% @page.uploads.each_with_index do |upload, i| %>
@@ -27,12 +14,11 @@ $(document).ready(function() {
      
       ]
     });
-    sb = $('<button>play</button>').click(function() {
+    sb = $('<button style="width: 40px; height: 40px;" class="btn btn-outline-secondary rounded-circle"></button>').click(function() {
         sound_<%=i%>.play();
     });
 
     $("#sounds").append(sb);
 <% end %>
 });
-//setTimeout(location.reload.bind(location), 180000);
 </script>
