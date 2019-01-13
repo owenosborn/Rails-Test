@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @soundset.name %>
+</p>
+<div id="sounds">
+
+</div>
+
+<style>
+.btn:focus, .btn:active {
+  outline: none !important;
+  box-shadow: none !important;
+}
+</style>
+<%= link_to 'Edit', edit_soundset_path(@soundset) %> |
+<%= link_to 'Back', soundsets_path %>
+
+<script>
+$(document).ready(function() {
+    
+        
+<% @soundset.sounds.each_with_index do |sound, i| %>
+    var sound_<%=i%> = new Howl({
+      src: [
+ 
+      '<%= rails_blob_url sound %>',
+     
+      ]
+    });
+    sb = $('<button style="width: 40px; height: 40px;" class="btn btn-outline-secondary rounded-circle"></button>').click(function() {
+        sound_<%=i%>.play();
+    });
+
+    $("#sounds").append(sb);
+<% end %>
+});
+</script>
+

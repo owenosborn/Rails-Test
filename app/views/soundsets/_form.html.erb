@@ -1,0 +1,32 @@
+<%= form_with(model: soundset, local: true) do |form| %>
+  <% if soundset.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(soundset.errors.count, "error") %> prohibited this soundset from being saved:</h2>
+
+      <ul>
+      <% soundset.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field p-2">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+  <!--div class="field p-2">
+   <label class="btn btn-primary btn-file">Browse...<%= form.file_field :sounds, multiple: true, id: "upload-fieldx" %></label><span id="file-statx"> 0 Files Selected</span>
+  </div-->
+
+  <div class="field p-2">
+   <label class="btn btn-primary btn-file">Browse...<%= form.file_field :sounds, multiple: true, style: "display:none;", id: "upload-field" %></label><span id="file-stat"> 0 Files Selected</span>
+  </div>
+
+
+  <div class="actions p-2">
+    <%= form.submit  :class => "btn btn-primary" %>
+  </div>
+<% end %>
+
+
