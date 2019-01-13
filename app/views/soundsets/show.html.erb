@@ -4,8 +4,36 @@
   <strong>Name:</strong>
   <%= @soundset.name %>
 </p>
-<div id="sounds">
+<div id="soundset">
 
+</div>
+
+<div class="keyboard">
+<button id="keykey1" style="bottom: 50px; left: 50px"  class="keykey btn btn-outline-secondary rounded-circle"></button>
+<button id="keykey3" style="bottom: 50px; left: 100px" class="keykey btn btn-outline-secondary rounded-circle"></button>
+<button id="keykey5" style="bottom: 50px; left: 150px" class="keykey btn btn-outline-secondary rounded-circle"></button>
+<button id="keykey6" style="bottom: 50px; left: 200px" class="keykey btn btn-outline-secondary rounded-circle"></button>
+<button id="keykey8" style="bottom: 50px; left: 250px" class="keykey btn btn-outline-secondary rounded-circle"></button>
+<button id="keykey10" style="bottom: 50px; left: 300px" class="keykey btn btn-outline-secondary rounded-circle"></button>
+<button id="keykey12" style="bottom: 50px; left: 350px" class="keykey btn btn-outline-secondary rounded-circle"></button>
+<button id="keykey13" style="bottom: 50px; left: 400px" class="keykey btn btn-outline-secondary rounded-circle"></button>
+<button id="keykey15" style="bottom: 50px; left: 450px" class="keykey btn btn-outline-secondary rounded-circle"></button>
+<button id="keykey17" style="bottom: 50px; left: 500px" class="keykey btn btn-outline-secondary rounded-circle"></button>
+<button id="keykey18" style="bottom: 50px; left: 550px" class="keykey btn btn-outline-secondary rounded-circle"></button>
+<button id="keykey20" style="bottom: 50px; left: 600px" class="keykey btn btn-outline-secondary rounded-circle"></button>
+<button id="keykey22" style="bottom: 50px; left: 650px" class="keykey btn btn-outline-secondary rounded-circle"></button>
+<button id="keykey24" style="bottom: 50px; left: 700px" class="keykey btn btn-outline-secondary rounded-circle"></button>
+
+<button id="keykey2" style="bottom: 100px; left: 75px" class="keykey btn btn-outline-secondary rounded-circle"></button>
+<button id="keykey4" style="bottom: 100px; left: 125px" class="keykey btn btn-outline-secondary rounded-circle"></button>
+<button id="keykey7" style="bottom: 100px; left: 225px" class="keykey btn btn-outline-secondary rounded-circle"></button>
+<button id="keykey9" style="bottom: 100px; left: 275px" class="keykey btn btn-outline-secondary rounded-circle"></button>
+<button id="keykey11" style="bottom: 100px; left: 325px" class="keykey btn btn-outline-secondary rounded-circle"></button>
+<button id="keykey14" style="bottom: 100px; left: 425px" class="keykey btn btn-outline-secondary rounded-circle"></button>
+<button id="keykey16" style="bottom: 100px; left: 475px" class="keykey btn btn-outline-secondary rounded-circle"></button>
+<button id="keykey19" style="bottom: 100px; left: 575px" class="keykey btn btn-outline-secondary rounded-circle"></button>
+<button id="keykey21" style="bottom: 100px; left: 625px" class="keykey btn btn-outline-secondary rounded-circle"></button>
+<button id="keykey23" style="bottom: 100px; left: 675px" class="keykey btn btn-outline-secondary rounded-circle"></button>
 </div>
 
 <style>
@@ -13,14 +41,85 @@
   outline: none !important;
   box-shadow: none !important;
 }
+.keykey {
+    position: absolute;
+    width:45px;
+    height:45px;
+}
+.keyboard {
+    position: relative;
+    height: 150px;
+    
+}
 </style>
 <%= link_to 'Edit', edit_soundset_path(@soundset) %> |
 <%= link_to 'Back', soundsets_path %>
 
 <script>
-$(document).ready(function() {
+//$(document).ready(function() {
+var soundSetSounds = {};
+<% @soundset.sounds.each_with_index do |sound, i| %>
+      soundSetSounds['<%= sound.blob.filename %>'] = '<%= rails_blob_url sound %>';
+<% end %>
+//console.log(soundSetSounds);
+
+$( document ).on('turbolinks:load', function() {
+     
+    var s1 = new Howl({ src: soundSetSounds['1.wav']});
+    var s2 = new Howl({ src: soundSetSounds['2.wav']});
+    var s3 = new Howl({ src: soundSetSounds['3.wav']});
+    var s4 = new Howl({ src: soundSetSounds['4.wav']});
+    var s5 = new Howl({ src: soundSetSounds['5.wav']});
+    var s6 = new Howl({ src: soundSetSounds['6.wav']});
+    var s7 = new Howl({ src: soundSetSounds['7.wav']});
+    var s8 = new Howl({ src: soundSetSounds['8.wav']});
+    var s9 = new Howl({ src: soundSetSounds['9.wav']});
+    var s10 = new Howl({ src: soundSetSounds['10.wav']});
+    var s11 = new Howl({ src: soundSetSounds['11.wav']});
+    var s12 = new Howl({ src: soundSetSounds['12.wav']});
+    var s13 = new Howl({ src: soundSetSounds['13.wav']});
+    var s14 = new Howl({ src: soundSetSounds['14.wav']});
+    var s15 = new Howl({ src: soundSetSounds['15.wav']});
+    var s16 = new Howl({ src: soundSetSounds['16.wav']});
+    var s17 = new Howl({ src: soundSetSounds['17.wav']});
+    var s18 = new Howl({ src: soundSetSounds['18.wav']});
+    var s19 = new Howl({ src: soundSetSounds['19.wav']});
+    var s20 = new Howl({ src: soundSetSounds['20.wav']});
+    var s21 = new Howl({ src: soundSetSounds['21.wav']});
+    var s22 = new Howl({ src: soundSetSounds['22.wav']});
+    var s23 = new Howl({ src: soundSetSounds['23.wav']});
+    var s24 = new Howl({ src: soundSetSounds['24.wav']});
+    $('#keykey1').click(function() {s1.play()});
+    $('#keykey2').click(function() {s2.play()});
+    $('#keykey3').click(function() {s3.play()});
+    $('#keykey4').click(function() {s4.play()});
+    $('#keykey5').click(function() {s5.play()});
+    $('#keykey6').click(function() {s6.play()});
+    $('#keykey7').click(function() {s7.play()});
+    $('#keykey8').click(function() {s8.play()});
+    $('#keykey9').click(function() {s9.play()});
+    $('#keykey10').click(function() {s10.play()});
+    $('#keykey11').click(function() {s11.play()});
+    $('#keykey12').click(function() {s12.play()});
+    $('#keykey13').click(function() {s13.play()});
+    $('#keykey14').click(function() {s14.play()});
+    $('#keykey15').click(function() {s15.play()});
+    $('#keykey16').click(function() {s16.play()});
+    $('#keykey17').click(function() {s17.play()});
+    $('#keykey18').click(function() {s18.play()});
+    $('#keykey19').click(function() {s19.play()});
+    $('#keykey20').click(function() {s20.play()});
+    $('#keykey21').click(function() {s21.play()});
+    $('#keykey22').click(function() {s22.play()});
+    $('#keykey23').click(function() {s23.play()});
+    $('#keykey24').click(function() {s24.play()});
+
+
     
-        
+/*
+
+    $("#soundset").empty();
+
 <% @soundset.sounds.each_with_index do |sound, i| %>
     var sound_<%=i%> = new Howl({
       src: [
@@ -33,8 +132,9 @@ $(document).ready(function() {
         sound_<%=i%>.play();
     });
 
-    $("#sounds").append(sb);
-<% end %>
+    $("#soundset").append(sb);
+<% end %>*/
 });
+
 </script>
 

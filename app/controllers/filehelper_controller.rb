@@ -7,7 +7,7 @@ class FilehelperController < ApplicationController
   end
 
   def index
-    
+    @files = ActiveStorage::Blob.all    
   end
 
 end

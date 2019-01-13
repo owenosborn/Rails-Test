@@ -1,5 +1,7 @@
 <h2>Files</h2>
 <p>
-  The time is now: <%= Time.now %>
+    <% @files.each do |file| %>
+        <p><%= file.filename%></p>
+ <% end %>
 </p>
 

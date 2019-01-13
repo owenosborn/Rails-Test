@@ -11,20 +11,25 @@
     </div>
   <% end %>
 
-  <div class="field p-2">
+  <div class="field pb-2">
     <%= form.label :name %>
     <%= form.text_field :name %>
   </div>
-  <!--div class="field p-2">
-   <label class="btn btn-primary btn-file">Browse...<%= form.file_field :sounds, multiple: true, id: "upload-fieldx" %></label><span id="file-statx"> 0 Files Selected</span>
+  <div class="field pb-2">
+    <%= form.label :sounds %>
+   <!--label class="btn btn-primary btn-file">Browse...<%= form.file_field :sounds, multiple: true, id: "upload-fieldx" %></label><span id="file-statx"> 0 Files Selected</span>
   </div-->
 
-  <div class="field p-2">
+  <div class="field pb-2">
    <label class="btn btn-primary btn-file">Browse...<%= form.file_field :sounds, multiple: true, style: "display:none;", id: "upload-field" %></label><span id="file-stat"> 0 Files Selected</span>
   </div>
 
+  <% if @soundset.sounds.attached? %>
+    <%= form.label :remove_soundset %>
+    <%= form.check_box :remove_soundset %>
+  <% end %>
 
-  <div class="actions p-2">
+  <div class="actions pb-2">
     <%= form.submit  :class => "btn btn-primary" %>
   </div>
 <% end %>

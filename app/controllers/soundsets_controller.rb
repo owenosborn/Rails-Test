@@ -69,7 +69,7 @@ class SoundsetsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def soundset_params
-      params.require(:soundset).permit(:name, sounds: [])
+      params.require(:soundset).permit(:name, :remove_soundset, sounds: [])
     end
 
 
