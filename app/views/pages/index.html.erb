@@ -14,9 +14,9 @@
     <% @pages.each do |page| %>
       <tr>
         <td><%= page.name %></td>
-	<td><%= link_to 'Show', page, :class => "btn btn-primary" %></td>
-        <td><%= link_to 'Edit', edit_page_path(page), :class => "btn btn-primary"%></td>
-        <td><%= link_to 'Destroy', page, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %></td>
+	<td><%= link_to 'Show', page%></td>
+        <td><%= link_to 'Edit', edit_page_path(page)%></td>
+        <td><%= link_to 'Destroy', page, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

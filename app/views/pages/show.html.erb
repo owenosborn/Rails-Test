@@ -1,31 +1,17 @@
-<div id="sounds">
 
+<div id="md-target">
+</div>
+ 
+<div style="display:none;" id="markdown">
+<%= @page.body %>
 </div>
 
-<style>
-.btn:focus, .btn:active {
-  outline: none !important;
-  box-shadow: none !important;
-}
-</style>
-
-<script>
-$(document).ready(function() {
-    
-        
-<% @page.uploads.each_with_index do |upload, i| %>
-    var sound_<%=i%> = new Howl({
-      src: [
- 
-      '<%= rails_blob_url upload %>',
-     
-      ]
-    });
-    sb = $('<button style="width: 40px; height: 40px;" class="btn btn-outline-secondary rounded-circle"></button>').click(function() {
-        sound_<%=i%>.play();
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script>
+    $( document ).ready(function() {
+        var md = marked ( $("#markdown").html(), {sanitize:false}); 
+        $( "#md-target" ).html(md );
     });
 
-    $("#sounds").append(sb);
-<% end %>
-});
-</script>
+  </script>
+

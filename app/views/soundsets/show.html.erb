@@ -1,8 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
-  <%= @soundset.name %>
+  <h2><%= @soundset.name %></h2>
 </p>
 <div id="soundset">
 
@@ -52,8 +51,6 @@
     
 }
 </style>
-<%= link_to 'Edit', edit_soundset_path(@soundset) %> |
-<%= link_to 'Back', soundsets_path %>
 
 <script>
 //$(document).ready(function() {
@@ -63,7 +60,9 @@ var soundSetSounds = {};
 <% end %>
 //console.log(soundSetSounds);
 
-$( document ).on('turbolinks:load', function() {
+//$( document ).on('turbolinks:load', function() {
+
+$( document ).ready(function() {
      
     var s1 = new Howl({ src: soundSetSounds['1.wav']});
     var s2 = new Howl({ src: soundSetSounds['2.wav']});
