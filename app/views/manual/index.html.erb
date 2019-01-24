@@ -1,0 +1,28 @@
+
+<div id="md"></div>
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script>
+$( document ).ready(function() {
+        $('#content').html(marked('# hI'));
+
+    $.get( "https://critterandguitari.github.io/Organelle_Manual/manual.md", function( data ) {
+          $( "#md" ).empty();
+          $( "#md" ).html( marked(data) );
+
+          // fix image urls
+          //$('#md').children('img').each(function() {
+        $('img').addClass('img-fluid');
+        $('img').attr('src', function(index, src) {
+           return 'https://critterandguitari.github.io/Organelle_Manual/' + src;
+        });
+          //$("#toc").toc({content: "#md", headings: "h1,h2"});
+          // update all img tags
+          //$("img").addClass("img-fluid");
+    });
+});
+
+</script>
+
+

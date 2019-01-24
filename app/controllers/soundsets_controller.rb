@@ -10,6 +10,7 @@ class SoundsetsController < ApplicationController
   # GET /soundsets/1
   # GET /soundsets/1.json
   def show
+    @soundsets = Soundset.all
   end
 
   # GET /soundsets/new

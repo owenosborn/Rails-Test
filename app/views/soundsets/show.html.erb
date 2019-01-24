@@ -34,7 +34,12 @@
 <button id="keykey21" style="bottom: 100px; left: 625px" class="keykey btn btn-outline-secondary rounded-circle"></button>
 <button id="keykey23" style="bottom: 100px; left: 675px" class="keykey btn btn-outline-secondary rounded-circle"></button>
 </div>
+<div>
+    <% @soundsets.each do |soundset| %>
+        <%= link_to soundset.name, soundset %>
+    <% end %>
 
+</div>
 <style>
 .btn:focus, .btn:active {
   outline: none !important;

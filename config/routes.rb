@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   	
   get '/files', to: 'filehelper#index'
+  get '/manual', to: 'manual#index'
 
  #the constraint allows anything in url except slash (normally '.' is not allowed
  get 'files/:id',
