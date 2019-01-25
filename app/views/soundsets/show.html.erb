@@ -58,14 +58,11 @@
 </style>
 
 <script>
-//$(document).ready(function() {
 var soundSetSounds = {};
 <% @soundset.sounds.each_with_index do |sound, i| %>
       soundSetSounds['<%= sound.blob.filename %>'] = '<%= rails_blob_url sound %>';
 <% end %>
-//console.log(soundSetSounds);
 
-//$( document ).on('turbolinks:load', function() {
 
 $( document ).ready(function() {
      
@@ -117,27 +114,6 @@ $( document ).ready(function() {
     $('#keykey22').click(function() {s22.play()});
     $('#keykey23').click(function() {s23.play()});
     $('#keykey24').click(function() {s24.play()});
-
-
-    
-/*
-
-    $("#soundset").empty();
-
-<% @soundset.sounds.each_with_index do |sound, i| %>
-    var sound_<%=i%> = new Howl({
-      src: [
- 
-      '<%= rails_blob_url sound %>',
-     
-      ]
-    });
-    sb = $('<button style="width: 40px; height: 40px;" class="btn btn-outline-secondary rounded-circle"></button>').click(function() {
-        sound_<%=i%>.play();
-    });
-
-    $("#soundset").append(sb);
-<% end %>*/
 });
 
 </script>

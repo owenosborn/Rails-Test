@@ -16,4 +16,6 @@
 //= require jquery3
 //= require popper
 //= require bootstrap
+//= require marked.min.js
+//= require stuff.js
 //= require_tree .

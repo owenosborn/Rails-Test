@@ -1,4 +1,4 @@
-
+asdf
 <div id="md-target">
 </div>
  
@@ -6,11 +6,13 @@
 <%= @page.body %>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <script>
-    $( document ).ready(function() {
-        var md = marked ( $("#markdown").html(), {sanitize:false}); 
-        $( "#md-target" ).html(md );
+    //$( document ).ready(function() {
+    $( document ).on('turbolinks:load', function() {
+       // console.log("turbo links load at " + window.location.href);
+        //
+      //  var md = marked ( $("#markdown").html(), {sanitize:false}); 
+      //  $( "#md-target" ).html(md );
     });
 
   </script>
