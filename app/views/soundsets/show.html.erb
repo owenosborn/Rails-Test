@@ -7,7 +7,7 @@
 
 </div>
 
-<div class="keyboard">
+<div id="keyboard">
 <button id="keykey1" style="bottom: 50px; left: 50px"  class="keykey btn btn-outline-secondary rounded-circle"></button>
 <button id="keykey3" style="bottom: 50px; left: 100px" class="keykey btn btn-outline-secondary rounded-circle"></button>
 <button id="keykey5" style="bottom: 50px; left: 150px" class="keykey btn btn-outline-secondary rounded-circle"></button>
@@ -50,7 +50,7 @@
     width:45px;
     height:45px;
 }
-.keyboard {
+#keyboard {
     position: relative;
     height: 150px;
     
@@ -58,14 +58,11 @@
 </style>
 
 <script>
-var soundSetSounds = {};
+    var soundSetSounds = {};
 <% @soundset.sounds.each_with_index do |sound, i| %>
       soundSetSounds['<%= sound.blob.filename %>'] = '<%= rails_blob_url sound %>';
 <% end %>
 
-
-$( document ).ready(function() {
-     
     var s1 = new Howl({ src: soundSetSounds['1.wav']});
     var s2 = new Howl({ src: soundSetSounds['2.wav']});
     var s3 = new Howl({ src: soundSetSounds['3.wav']});
@@ -114,7 +111,6 @@ $( document ).ready(function() {
     $('#keykey22').click(function() {s22.play()});
     $('#keykey23').click(function() {s23.play()});
     $('#keykey24').click(function() {s24.play()});
-});
 
 </script>
 
