@@ -1,8 +1,8 @@
 
 console.log("included stuff");
 
-$( document ).on('turbolinks:load', function() {
-//$( document ).ready(function() {
+//$( document ).on('turbolinks:load', function() {
+$( document ).ready(function() {
     console.log("turbo links load at " + window.location.href);
     
     $('#upload-field').change(function() {
