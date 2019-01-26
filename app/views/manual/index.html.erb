@@ -1,6 +1,22 @@
 
-<div id="md"></div>
-</script>
+
+  <div class="container">
+    <div class="row">
+      <!-- sidebar, which will move to the top on a small screen -->
+      <div class="col-sm-3">
+        <nav id="toc" class="sticky-top"></nav>
+      </div>
+      <!-- main content area -->
+      <div class="col-sm-9" id="md">...</div>
+    </div>
+  </div>
+
+
+<link
+  rel="stylesheet"
+  href="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.css"
+/>
+<script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <script>
@@ -17,9 +33,13 @@ $( document ).ready(function() {
         $('img').attr('src', function(index, src) {
            return 'https://critterandguitari.github.io/Organelle_Manual/' + src;
         });
-          //$("#toc").toc({content: "#md", headings: "h1,h2"});
-          // update all img tags
           //$("img").addClass("img-fluid");
+        var navSelector = "#toc";
+        var $myNav = $(navSelector);
+        Toc.init($myNav);
+            $("body").scrollspy({
+            target: navSelector
+        });
     });
 });
 
